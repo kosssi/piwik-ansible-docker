@@ -1,0 +1,32 @@
+db:
+  image: mysql
+  ports:
+    - 3306:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: piwik
+    MYSQL_USER: piwik
+    MYSQL_PASSWORD: piwik
+
+app:
+  build: images/piwik
+
+web:
+  build: images/nginx
+  ports:
+    - 80:80
+  volumes_from:
+    - app
+  volumes:
+    - /home/docker/logs/nginx/:/var/log/nginx
+  links:
+    - php
+
+php:
+  build: images/php
+  volumes_from:
+    - app
+  links:
+    - db
+  ports:
+    - 9000:9000

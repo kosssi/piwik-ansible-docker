@@ -4,4 +4,4 @@
 
  - [ ] [with Ansible](1-ansible/README.md)
  - [ ] [with Ansible and Docker](2-ansible-docker/README.md)
- - [ ] [with Docker](3-docker/README.md)
+ - [x] [with Docker](3-docker/README.md)
